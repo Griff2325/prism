@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prism-lights"
+version = "0.1.0"
+description = "Local, bounded frame-to-light harness with a Govee LAN adapter"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+prism-lights = "prism_lights.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["prism_lights*"]
