@@ -48,3 +48,9 @@ A laptop is useful for setup and tests. A persistent process can instead run on 
 The [official LAN guide](https://app-h5.govee.com/user-manual/wlan-guide) is the authority for model support and setup. As checked on 2026-10-17, its model search lists H6008; H600B returned no match. Firmware and the actual LAN Control toggle still need checking. The cloud supported-model list is a different list and does not prove LAN support.
 
 A three-second physical-network discovery during development found zero responders. No physical light commands were sent. This is compatible with LAN Control being off, unsupported hardware, or multicast filtering; it is not evidence that a light is absent. [Validation](docs/validation.md) separates unit/protocol checks from untested hardware behavior.
+
+### Other connection routes under investigation
+
+Govee lists [H600B as Matter-compatible](https://us.govee.com/blogs/led-light-bulbs/best-smart-bulbs). Matter is a separate connection path from Govee's LAN API; its pairing code can be found on the product or in device settings according to [Govee's setup guide](https://us.govee.com/pages/matter-faq). Pairing still needs a Matter controller. This harness does not yet include a Matter adapter or controller.
+
+For H6008 revisions without the LAN toggle, [community Bluetooth implementations report physical H6008 control](https://github.com/hardcpp/GoveeBleMqttServer). That protocol is unofficial and compatibility with the tested installation's exact revision remains unverified. A separate bounded Bluetooth discovery observed nearby H6008 and H600B advertisements, but advertisement visibility does not prove control, ownership, multi-device capacity, latency or reliable scene synchronization. No Bluetooth command adapter is included in this release.
