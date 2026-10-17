@@ -22,3 +22,13 @@ python3 examples/frame-producer.py | python3 -m prism_lights run --source stdin 
 ```
 
 Hardware validation after explicit target selection should check small changes first, output cadence, input unplug/timeout, SIGTERM, coexistence with Govee Home, and recovery. UDP delivery is best effort and restore of earlier scenes is not implemented. Default hold stops network changes when input vanishes; it is not a device-side lease.
+
+## Android screen-color availability, 2026-10-17
+
+A temporary ordinary Android app was installed on the Panasonic Fire OS 8 / Android API 30 TV. The owner-authorized standard MediaProjection consent flow succeeded, and Android reported the app's TYPE_SCREEN_CAPTURE session. No privileged capture grant or protected-surface override was used. The source is retained under `tools/android-capture-probe/`; [capture documentation](capture.md#android-capture-diagnostic) describes reproduction and cleanup.
+
+- Moving Vista positive control: 22 sampled frames over 9.785 seconds, visible scene captured, changing central pixels.
+- YouTube: official Blender Foundation Big Buck Bunny (`https://www.youtube.com/watch?v=aqz-KE-bpKQ`), 22 frames over 9.682 seconds. First/last thumbnails visibly progressed from the title card to the landscape; captured central mean RGB-channel values ranged from 188.0942 to 233.0648 with no near-black central pixels. This validates this ordinary video, not YouTube rentals or every possible stream.
+- Netflix: capture changed to black during app entry, but actual movie playback was not established. This trial is **inconclusive** and must not be represented as a verified DRM block or successful movie capture. Physical-TV playback confirmation is pending.
+
+The projection session was stopped and its null state verified after testing. Captures, account/app dumps and device identifiers remain private. No light commands were sent. This test is not connected to Prism's color-output engine and does not measure end-to-end synchronization.

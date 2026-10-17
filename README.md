@@ -41,7 +41,7 @@ No lights are discovered automatically in the background. No cloud login, MQTT d
 
 The core depends on small `FrameSource` and `LightAdapter` contracts, not Govee or a UI. Input is a local JSON-lines pipe; no HTTP server, LAN input listener, unauthenticated remote control endpoint, or global Android cleartext-network exception is introduced. [Architecture and input format](docs/architecture.md) describes how another app can provide only zone colors.
 
-A laptop is useful for setup and tests. A persistent process can instead run on an existing Linux home server or Raspberry Pi with Python and LAN access. This release still **needs such a host**; there is no Android APK or autonomous TV deployment. An Android-native transport/core port is a separate integration step. The current service does not capture the TV or receive launcher frames by itself.
+A laptop is useful for setup and tests. A persistent process can instead run on an existing Linux home server or Raspberry Pi with Python and LAN access. This release still **needs such a host**; there is no Android lighting-controller APK or autonomous TV deployment. A separate [temporary Android capture diagnostic](docs/capture.md#android-capture-diagnostic) checks permitted screen-color access. An Android-native transport/core port is a separate integration step. The current service does not capture the TV or receive launcher frames by itself.
 
 ## Device support and validation
 

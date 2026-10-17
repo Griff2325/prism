@@ -8,3 +8,10 @@ dist/
 .env
 *.key
 *.pem
+
+# Android diagnostic build/signing output
+*.apk
+*.apk.idsig
+*.p12
+*.jks
+*.keystore
